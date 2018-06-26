@@ -3,7 +3,7 @@ FROM kangaechu/nlp-jp-py:latest
 RUN apk add sudo shadow && \
   pip3 install jupyter && \
   useradd -m  nlp && \
-  echo 'jupyter ALL=NOPASSWD: /usr/bin/pip3' > /etc/sudoers
+  echo 'nlp ALL=NOPASSWD: /usr/bin/pip3' > /etc/sudoers
 
 USER nlp
 RUN mkdir -p /home/nlp/jupyter
