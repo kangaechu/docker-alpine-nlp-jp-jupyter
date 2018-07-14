@@ -1,7 +1,9 @@
 FROM kangaechu/nlp-jp-py:latest
 
-RUN apk add sudo shadow && \
+RUN apk add --update --no-cache sudo shadow && \
+  apk add --no-cache --virtual .builddeps gcc g++ python3-dev musl-dev && \
   pip3 install jupyter && \
+  apk del .builddeps && \
   useradd -m  nlp && \
   echo 'nlp ALL=NOPASSWD: /usr/bin/pip3' > /etc/sudoers
 
